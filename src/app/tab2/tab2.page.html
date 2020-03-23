@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Productos por adquirir
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,5 +13,18 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list>
+    <div *ngFor="let product of products; index as i">
+      <ion-item-sliding (ionSwipe)="check(i)" *ngIf="!product.check" (click)="viewDetails(product)">
+        <ion-item>
+          <ion-label>{{product.name}}</ion-label>
+          <ion-chip color="danger">
+            <ion-label>Falta por comprar</ion-label>
+          </ion-chip>
+        </ion-item>
+        <ion-item-options side="start">
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
+  </ion-list>
 </ion-content>

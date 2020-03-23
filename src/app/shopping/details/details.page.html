@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles de producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>{{product.name}}</ion-label>
+    <ion-item *ngIf="product.check">
+      <ion-label color="success">(Producto adquirido)</ion-label>
+    </ion-item>
+    <ion-item *ngIf="!product.check">
+      <ion-label color="danger">(Falta por comprar)</ion-label>
+    </ion-item>
+  </ion-item>
+  <ion-item>
+    <ion-label>Descripción: {{product.description}}</ion-label>
+  </ion-item>
+</ion-content>

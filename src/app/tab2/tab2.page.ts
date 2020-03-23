@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Shopping } from '../models/shopping';
+import { ShoppingService } from '../services/shopping.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +10,18 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  products: Shopping[] = [];
+
+  constructor(private shoppingService: ShoppingService, private router: Router) {
+    this.products = this.shoppingService.getProducts();
+  }
+
+  viewDetails(product: Shopping) {
+    this.shoppingService.viewDetails(product);
+  }
+
+  check(position: number) {
+    this.shoppingService.check(position);
+  }
 
 }
