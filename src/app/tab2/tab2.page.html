@@ -15,7 +15,7 @@
 
   <ion-list>
     <div *ngFor="let product of products; index as i">
-      <ion-item-sliding (ionSwipe)="check(i)" *ngIf="!product.check" (click)="viewDetails(product)">
+      <ion-item-sliding (ionSwipe)="check(i)" *ngIf="!product.check" (dblclick)="viewDetails(product)">
         <ion-item>
           <ion-label>{{product.name}}</ion-label>
           <ion-chip color="danger">

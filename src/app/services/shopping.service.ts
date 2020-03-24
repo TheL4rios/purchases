@@ -55,6 +55,10 @@ export class ShoppingService {
     this.router.navigate(['/details'], extras);
   }
 
+  newProduct(product: Shopping) {
+    this.products.push(product);
+  }
+
   getProducts(): Shopping[] {
     return this.products;
   }

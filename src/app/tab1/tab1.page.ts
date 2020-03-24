@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Shopping } from '../models/shopping';
 import { ShoppingService } from '../services/shopping.service';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -22,6 +22,10 @@ export class Tab1Page {
 
   check(position: number) {
     this.shoppingService.check(position);
+  }
+
+  newProduct(product: Shopping) {
+      this.router.navigate(['/new-product']);
   }
 
 }

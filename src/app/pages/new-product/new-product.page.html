@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar Producto</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="myForm">
+    <ion-item>
+      <ion-label position="floating">Nombre<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input requiredtype="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea type="text" formControlName="description"></ion-textarea>
+    </ion-item>
+    <ion-button expand="block" shape="round" color="primary" (click)="saveNewProduct()">
+      Agregar
+    </ion-button>
+  </form>
+</ion-content>

@@ -15,7 +15,7 @@
 
   <ion-list>
     <div *ngFor="let product of products; index as i">
-      <ion-item-sliding (ionSwipe)="check(i)" (click)="viewDetails(product)">
+      <ion-item-sliding (ionSwipe)="check(i)" (dblclick)="viewDetails(product)">
         <ion-item>
           <ion-label>{{product.name}}</ion-label>
           <ion-chip color="success" *ngIf="product.check">
@@ -30,4 +30,15 @@
       </ion-item-sliding>
     </div>
   </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="newProduct()">
+        <ion-icon color="success" name="add-circle-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
