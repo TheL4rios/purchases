@@ -21,7 +21,7 @@
     </ion-item>
 
     <div *ngFor="let product of products; index as i">
-      <ion-item-sliding (ionSwipe)="check(i)" (dblclick)="viewDetails(product)">
+      <ion-item-sliding (ionSwipe)="operation(i, $event)" (dblclick)="viewDetails(product)">
         <ion-item>
           <ion-label>{{product.name}}</ion-label>
           <ion-chip color="success" *ngIf="product.check">
@@ -31,8 +31,12 @@
             <ion-label>Falta por comprar</ion-label>
           </ion-chip>
         </ion-item>
+
         <ion-item-options side="start">
         </ion-item-options>
+        <ion-item-options side="end">
+        </ion-item-options>
+
       </ion-item-sliding>
     </div>
   </ion-list>

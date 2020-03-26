@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Shopping } from '../models/shopping';
 import { ShoppingService } from '../services/shopping.service';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -13,7 +14,7 @@ export class Tab1Page {
   products: Shopping[] = [];
   search: string;
 
-  constructor(private shoppingService: ShoppingService, private router: Router) {
+  constructor(private shoppingService: ShoppingService, private router: Router, private alert: AlertController) {
     this.products = this.shoppingService.getProducts();
   }
 
@@ -21,8 +22,31 @@ export class Tab1Page {
     this.shoppingService.viewDetails(product);
   }
 
-  check(position: number) {
-    this.shoppingService.check(position);
+  operation(position: number, ev) {
+    const side = ev.detail.side;
+
+    if (side === 'start') {
+      this.shoppingService.check(position);
+    } else {
+      this.showAlert(position);
+    }
+  }
+
+  async showAlert(pos: number) {
+    const al = await this.alert.create({
+      header: 'Confirmar',
+      message: '¿Seguro que desea eliminar ' + this.products[pos].name + '?',
+      buttons: [{
+        text: 'No',
+        handler: () => {}
+      }, {
+        text: 'Si',
+        handler: () => {
+          this.shoppingService.deleteProduct(pos);
+        }
+      }]
+    });
+    await al.present();
   }
 
   newProduct(product: Shopping) {

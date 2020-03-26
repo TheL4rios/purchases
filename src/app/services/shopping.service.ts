@@ -59,6 +59,10 @@ export class ShoppingService {
     this.products.push(product);
   }
 
+  deleteProduct(position: number): void {
+    this.products.splice(position, 1);
+  }
+
   getProducts(): Shopping[] {
     return this.products;
   }
