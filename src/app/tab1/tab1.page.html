@@ -14,6 +14,12 @@
   </ion-header>
 
   <ion-list>
+
+    <ion-item>
+      <ion-label position="floating">Buscar</ion-label>
+      <ion-input type="text" (keyup)="filter()" [(ngModel)]="search"></ion-input>
+    </ion-item>
+
     <div *ngFor="let product of products; index as i">
       <ion-item-sliding (ionSwipe)="check(i)" (dblclick)="viewDetails(product)">
         <ion-item>

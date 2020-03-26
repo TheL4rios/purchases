@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class Tab1Page {
 
   products: Shopping[] = [];
+  search: string;
 
   constructor(private shoppingService: ShoppingService, private router: Router) {
     this.products = this.shoppingService.getProducts();
@@ -26,6 +27,20 @@ export class Tab1Page {
 
   newProduct(product: Shopping) {
       this.router.navigate(['/new-product']);
+  }
+
+  clearSearch(): void {
+    this.products = this.shoppingService.getProducts();
+  }
+
+  filter(): void {
+    this.clearSearch();
+    if (this.search && this.search.trim()) {
+      this.products = this.products.filter((product) => {
+        return ((product.name.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase()) > -1) ||
+                 product.description.toLocaleLowerCase().indexOf(this.search.toLocaleLowerCase()) > -1);
+      });
+    }
   }
 
 }
